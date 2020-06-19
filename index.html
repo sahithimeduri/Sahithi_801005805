@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  <script type="text/javascript" src="index.js"></script>
 <!--Header-->
 <head>
     <meta charset="UTF-8">
@@ -11,10 +11,10 @@
 <!--Close Header-->
 
 <!--Body-->
-<body>
+<body id = "myBody">
 <div class = top>
-    <a href = "index.html">Font Resize</a>
-    <a href = "index.html">Switch Style</a>
+    <a onclick="increaseFontSize()">Increase Font</a>
+    <a onclick="decreaseFontSize()">Decrease Font</a>
     <a href = "admin/login.html">Admin Login</a>
 </div>
 
@@ -68,8 +68,9 @@
     slides[slideIndex-1].style.display = "block";  
     dots[slideIndex-1].className += " active";
   }
-</script>
 
+</script>
+<h1>Blog Posts</h1>
 <div class= container>
     <div> <a href = "admin/read_post.html">Blog Entry 1</a> </div>
     <div> <a href = "admin/read_post.html">Blog Entry 2</a> </div>
