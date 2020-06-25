@@ -16,8 +16,10 @@ app.use(methodOverride('_method'))
 
 app.get('/', async (req, res) => {
     const posts = await Post.find().sort({ createdAt: 'desc' })
-    res.render('posts/index', {posts: posts})
+    res.render('posts/index', { posts: posts })
 })
 app.use('/posts', postRouter)
 app.listen(5000)
 
+// first start mongodb: brew services start mongodb-community@4.2
+// to stop: brew services stop mongodb-community@4.2 

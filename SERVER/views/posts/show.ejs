@@ -13,12 +13,11 @@
         <div class="text-muted mb-2">
             <%= post.createdAt.toLocaleDateString() %>
         </div>
+        <a href="/" class="btn btn-secondary">All Posts</a>
+        <a href="/posts/edit/<%= post.id %>" class="btn btn-info">Edit</a>
+        <div class="mt-4">
+            <%- post.sanitizedHtml %>
+        </div>
     </div>
-    <a href="/" class="btn btn-secondary">All Posts</a>
-    <a href="/posts/edit/<%= post.id %>" class="btn btn-info">Edit</a>
-    <div>
-        <%- post.sanitizedHtml %>
-    </div>
-
 </body>
 </html>
