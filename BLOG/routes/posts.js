@@ -1,28 +1,23 @@
 const express = require('express')
-const Post = require('../models/post')
 const router = express.Router()
 
+const Post = require('../models/post')
 
-router.get('/new', (req, res) => {
-    res.render('posts/new', { post: new Post() })
-})
 
+// router.get('/users/login', (req, res) => {
+//     res.render('/users/login.ejs')
+// })
+
+
+// router.get('/login', (req, res) => {
+//     res.render('posts/login')
+// })
 // router.get('/:id', async (req, res) => {
 //     const post = await Post.findById(req.params.id)
 //     if (post == null) res.redirect('/')
 //     res.render('posts/show', { post: post })
 // })
 
-router.get('/edit/:id', async (req, res) => {
-    const post = await Post.findById(req.params.id)
-    res.render('posts/edit', { post: post })
-})
-
-router.get('/:slug', async (req, res) => {
-    const post = await Post.findOne({ slug: req.params.slug })
-    if (post == null) res.redirect('/')
-    res.render('posts/show', { post: post })
-})
 // error plagued code below
 // "UnhandledPromiseRejectionWarning: Unhandled promise rejection."
 // router.post('/', async (req, res) => {
@@ -39,6 +34,19 @@ router.get('/:slug', async (req, res) => {
 //         res.render('posts/new', { post: post })
 //     }
 // })
+router.get('/new', (req, res) => {
+    res.render('posts/new', { post: new Post() })
+})
+router.get('/edit/:id', async (req, res) => {
+    const post = await Post.findById(req.params.id)
+    res.render('posts/edit', { post: post })
+})
+
+router.get('/:slug', async (req, res) => {
+    const post = await Post.findOne({ slug: req.params.slug })
+    if (post == null) res.redirect('/')
+    res.render('posts/show', { post: post })
+})
 
 router.post('/', async (req, res, next) => {
     req.post = new Post()

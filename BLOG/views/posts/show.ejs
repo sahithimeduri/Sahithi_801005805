@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blog</title>
 </head>
-<body>
+<body id="myBody">
+    <div class = "container mt-4 float-center">
+        <!--Bootstrap Docs for Buttons-->
+        <!--https://getbootstrap.com/docs/4.5/components/buttons/#conveying-meaning-to-assistive-technologies-->
+        <a onclick=decreaseFontSize() class="btn btn-outline-secondary">Decrease Font</a>
+        <a onclick=increaseFontSize() class="btn btn-outline-secondary">Increase Font</a>
+        <a href = "../posts/index.ejs" class="btn btn-dark float-right">Blog</a>
+    </div>
     <div class = "container">
-        <h1 class="mb-4"><%= post.title %></h1>
-        <div class="text-muted mb-2">
-            <%= post.createdAt.toLocaleDateString() %>
+        <h1 class="mb-4 mt-4"><%= post.title %></h1>
+        <div class="text-muted mb-4">
+            Written on: <%= post.createdAt.toLocaleDateString() %>
         </div>
         <a href="/" class="btn btn-secondary">All Posts</a>
         <a href="/posts/edit/<%= post.id %>" class="btn btn-info">Edit</a>
@@ -19,5 +25,14 @@
             <%- post.sanitizedHtml %>
         </div>
     </div>
+    <script>
+        function increaseFontSize() {
+            document.getElementById("myBody").style.fontSize = "3.0em";
+        }
+        
+        function decreaseFontSize() {
+            document.getElementById("myBody").style.fontSize = "1.0em";
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body id="myBody">
+    <div class = "container mt-4 float-center">
+        <!--Bootstrap Docs for Buttons-->
+        <!--https://getbootstrap.com/docs/4.5/components/buttons/#conveying-meaning-to-assistive-technologies-->
+        <a onclick=decreaseFontSize() class="btn btn-outline-secondary">Decrease Font</a>
+        <a onclick=increaseFontSize() class="btn btn-outline-secondary">Increase Font</a>
+        <a href = "/users/listUsers" class="btn btn-dark float-right">List Users</a>
+        <!-- <a href = "../posts/index.ejs" class="btn btn-dark float-right">Blog</a> -->
+    </div>
+    <div class = "container text-center vertical-center">
+        <h1 class="mb-4 mt-4"><%= user.name %></h1>
+        <h5>Email: <%= user.email %></h5>
+        <h5>Username: <%= user.username %></h5>
+        <div class="text-muted mt-4 mb-4">
+            Joined on: <%= user.joinedOn.toLocaleDateString() %>
+        </div>
+        <a href="/users/listUsers" class="btn btn-secondary">All Users</a>
+        <a href="/users/updateUser/<%= user.id %>" class="btn btn-info">Edit</a>
+        <div class="mt-4">
+            <%- user.sanitizedHtml %>
+        </div>
+    </div>
+    <script>
+        function increaseFontSize() {
+            document.getElementById("myBody").style.fontSize = "3.0em";
+        }
+        
+        function decreaseFontSize() {
+            document.getElementById("myBody").style.fontSize = "1.0em";
+        }
+    </script>
+</body>
+</html>
